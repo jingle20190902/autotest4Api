@@ -4,9 +4,10 @@
 @project： 自动化测试
 @author：Sun
 @file:request.py
-@time:2020-02-2020/2/3 13:56:51
+@time:2020-02-2020/2/5 20:48:17
 
 """
+
 '''
 封装HTTP请求
 1.http_request 是主方法，直接供外部调用
@@ -15,4 +16,3 @@
 '''
 
 import requests,os,logging
-
