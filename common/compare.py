@@ -21,3 +21,4 @@ from public import config
 operation_db=pymysql.OperationDbInterface() #实例化测试库操作类
 class CompareParam(object):
     # 初始化数据
+    def __init__(self,params_interface):
