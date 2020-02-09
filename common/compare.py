@@ -43,4 +43,13 @@ class CompareParam(object):
                         result={'code':'0000','message':'关键字参数值相同','data':[]}
                         operation_db.op_sql("update case_interface set code_actual ='%s',result_code_compare=%s where id=%s" %(temp_result_interface[temp_code_to_compare],1,self.id_case))
                         # operation_db.Op_sql("update case_interface set code_actual=%s,result_code_compare=%s,result_interface='%s' where id=%s" %(temp_result_interface[temp_code_to_compare],0,result_interface,self.id_case))
-                        elif
+                    elif unicode(str(temp_result_interface[temp_code_to_compare]),"utf-8")!=unicode(str(self.params_interface['code_expect']),"utf-8"):
+                        result ={'code':'1003','message':'关键字参数值不同','data':[]}
+                        operation_db.op_sql("update case_interface set code_actual='%s',result_code_compare=%s where id=%s" %(temp_result_interface[temp_code_to_compare],3,self.id_case))
+                    else:
+                        result={'code':'1001','message':'返回包数据无关键字参数','data':[]}
+                        operation_db.op_sql("update case_interface set code_actual='%s' where id=%s" %(2,self.id_case))
+                    else:
+                        result={'code':'1000','message':'返回包格式不合法','data':[]}
+                        operation_db.op_sql("update case_interface set reslut_code_compare=%s where id=%s" %(4,self.id_case))
+        except Exception as error:  #记录日志到log.txt文件
